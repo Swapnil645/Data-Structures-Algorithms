@@ -5,6 +5,36 @@ class BST:
         self.key=key
         self.left=None
         self.right=None
+
+    def height_of_tree(self):
+        if self:
+            return 0
+        return 1 + max(self.height_of_tree(self.left),self.height_of_tree(self.right))
+
+    def size_of_tree(self):
+        if self:
+            return 0
+        return 1 + max(self.height_of_tree(self.left),self.height_of_tree(self.right))
+
+    def inorder(self,node):
+        if node:
+            self.inorder(node.left)
+            print(node.key)
+            self.inorder(node.right)
+
+    def preorder(self,node):
+        if node:
+            print(node.key)
+            self.preorder(node.left)
+            self.preorder(node.right)
+
+    def postorder(self,node):
+        if node:
+            self.postorder(node.left)
+            self.postorder(node.right)
+            print(node.key)
+
+
     
 def tuple_to_tree(tup):
     if isinstance(tup,list) and len(tup)==3:
